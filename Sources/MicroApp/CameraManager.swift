@@ -53,20 +53,12 @@ final class CameraManager: NSObject {
     }
 
     private func findCaptureDevice() -> AVCaptureDevice? {
-        let externalDiscovery = AVCaptureDevice.DiscoverySession(
+        let discovery = AVCaptureDevice.DiscoverySession(
             deviceTypes: [.external],
             mediaType: .video,
             position: .unspecified
         )
-        if let device = externalDiscovery.devices.first {
-            return device
-        }
-        let allDiscovery = AVCaptureDevice.DiscoverySession(
-            deviceTypes: [.builtInWideAngleCamera, .external],
-            mediaType: .video,
-            position: .unspecified
-        )
-        return allDiscovery.devices.first
+        return discovery.devices.first
     }
 
     private func addDevice(_ device: AVCaptureDevice) {
