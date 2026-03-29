@@ -37,5 +37,12 @@ codesign --force --sign - --entitlements /dev/stdin "${APP_BUNDLE}" <<ENTITLEMEN
 </plist>
 ENTITLEMENTS
 
-echo "==> Done! Opening ${APP_BUNDLE}..."
+echo "==> Creating DMG..."
+DMG_NAME="${APP_NAME}.dmg"
+rm -f "${DMG_NAME}"
+hdiutil create -volname "${APP_NAME}" -srcfolder "${APP_BUNDLE}" -ov -format UDZO "${DMG_NAME}"
+
+echo "==> Done!"
+echo "    ${APP_BUNDLE} — run directly"
+echo "    ${DMG_NAME}   — distributable disk image"
 open "${APP_BUNDLE}"
