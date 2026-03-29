@@ -1,0 +1,16 @@
+# Swift / SPM
+.build/
+.swiftpm/
+Package.resolved
+
+# App bundle (built artifact)
+MicroApp.app/
+
+# macOS
+.DS_Store
+*.xcodeproj/
+*.xcworkspace/
+xcuserdata/
+
+# Claude Code
+.claude/
